@@ -10,7 +10,7 @@ module OpeningHoursConverter
     end
 
     def get_as_minute_array
-      minute_array = Array.new(MINUTES_MAX + 1, false)
+      minute_array = Array.new(MINUTES_MAX, false)
 
       @intervals.each do |interval|
         next if interval.nil?
@@ -67,7 +67,7 @@ module OpeningHoursConverter
           minute_start = i
         elsif minute_start < 0
           minute_start = i
-        elsif i == minute_array.length - 1
+        elsif i == minute_array.length
           intervals << OpeningHoursConverter::Interval.new(0, minute_start, 0, i - 1, off)
           minute_start = -1
           off = false

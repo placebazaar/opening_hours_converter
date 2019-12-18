@@ -9,13 +9,13 @@ RSpec.describe OpeningHoursConverter::Day, '#get_as_minute_array' do
   it "has the right length" do
     d = OpeningHoursConverter::Day.new
     minutes = d.get_as_minute_array
-    expect(minutes.length).to eql(24*60+1)
+    expect(minutes.length).to eql(24*60)
   end
   it "has the right values" do
     d = OpeningHoursConverter::Day.new
     d.add_interval(OpeningHoursConverter::Interval.new(0, 60, 0, 120))
     minutes = d.get_as_minute_array
-    for m in 0..(24*60)
+    for m in 0...(24*60)
       if m >= 60 && m <= 120
         expect(minutes[m]).to be true
       else

@@ -10,7 +10,7 @@ RSpec.describe OpeningHoursConverter::Week, '#get_as_minute_array' do
     d = OpeningHoursConverter::Week.new
     minutes = d.get_as_minute_array
     expect(minutes.length).to eql(7)
-    expect(minutes[0].length).to eql(24*60+1)
+    expect(minutes[0].length).to eql(24*60)
   end
 
   it "has the right values" do
@@ -18,7 +18,7 @@ RSpec.describe OpeningHoursConverter::Week, '#get_as_minute_array' do
     d.add_interval(OpeningHoursConverter::Interval.new(0, 60, 0, 120))
     minutes = d.get_as_minute_array
     for d in 0..6
-      for m in 0..(24*60)
+      for m in 0...(24*60)
         if d == 0 && m >= 60 && m <= 120
           expect(minutes[d][m]).to be true
         else

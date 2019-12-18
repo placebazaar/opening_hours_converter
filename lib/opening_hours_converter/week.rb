@@ -10,7 +10,7 @@ module OpeningHoursConverter
     end
 
     def get_as_minute_array
-      minute_array = Array.new(DAYS_MAX + 1) { Array.new(MINUTES_MAX + 1, false) }
+      minute_array = Array.new(DAYS_MAX + 1) { Array.new(MINUTES_MAX, false) }
 
       @intervals.each do |interval|
         if !interval.nil?
